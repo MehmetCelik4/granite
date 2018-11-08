@@ -33,3 +33,4 @@
 /home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/GraniteHouse.dll
 /home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/GraniteHouse.pdb
 /home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/GraniteHouse.csproj.CopyComplete
+/home/mehmet/project/dotnet/GraniteHouse/bin/Debug/netcoreapp2.1/app.db

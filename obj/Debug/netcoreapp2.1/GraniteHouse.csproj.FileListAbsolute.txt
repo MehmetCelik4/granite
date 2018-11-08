@@ -40,3 +40,4 @@
 /home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/Razor/Areas/Customer/Views/_ViewStart.g.cshtml.cs
 /home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/Razor/Areas/Admin/Views/ProductTypes/index.g.cshtml.cs
 /home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/Razor/Areas/Admin/Views/ProductTypes/Create.g.cshtml.cs
+/home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_TableButtonPartial.g.cshtml.cs

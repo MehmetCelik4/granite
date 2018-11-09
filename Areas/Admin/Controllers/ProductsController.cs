@@ -76,14 +76,14 @@ namespace GraniteHouse.Areas.Admin.Controllers
                 {
                     files[0].CopyTo(filestream);
                 }
-                productsFromDb.Image = @"\" + SD.ImageFolder + @"\" + ProductsVM.Products.Id + extension;
+                productsFromDb.Image = @"/" + SD.ImageFolder + @"/" + ProductsVM.Products.Id + extension;
             }
             else
             {
                 //when user does not upload image
-                var uploads = Path.Combine(webRootPath, SD.ImageFolder + @"\" + SD.DefaultProductImage);
-                System.IO.File.Copy(uploads, webRootPath + @"\" + SD.ImageFolder + @"\" + ProductsVM.Products.Id + ".jpg");
-                productsFromDb.Image = @"\" + SD.ImageFolder + @"\" + ProductsVM.Products.Id + ".jpg";
+                var uploads = Path.Combine(webRootPath, SD.ImageFolder + @"/" + SD.DefaultProductImage);
+                System.IO.File.Copy(uploads, webRootPath + @"/" + SD.ImageFolder + @"/" + ProductsVM.Products.Id + ".jpg");
+                productsFromDb.Image = @"/" + SD.ImageFolder + @"/" + ProductsVM.Products.Id + ".jpg";
             }
             await _db.SaveChangesAsync();
 

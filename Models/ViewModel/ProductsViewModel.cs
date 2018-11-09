@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraniteHouse.Models.ViewModel
 {
-    public class ProductViewModel
+    public class ProductsViewModel
     {
         public Products Products { get; set; }
         public IEnumerable<ProductTypes> ProductTypes { get; set; }

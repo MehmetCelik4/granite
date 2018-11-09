@@ -29,10 +29,7 @@
 /home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/GraniteHouse.dll
 /home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/GraniteHouse.pdb
 /home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/GraniteHouse.csproj.CopyComplete
-/home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/Razor/Areas/Customer/Views/Home/About.g.cshtml.cs
-/home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/Razor/Areas/Customer/Views/Home/Contact.g.cshtml.cs
 /home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/Razor/Areas/Customer/Views/Home/Index.g.cshtml.cs
-/home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/Razor/Areas/Customer/Views/Home/Privacy.g.cshtml.cs
 /home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/Razor/Areas/Admin/Views/_ViewImports.g.cshtml.cs
 /home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/Razor/Areas/Admin/Views/_ViewStart.g.cshtml.cs
 /home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/Razor/Areas/Customer/Views/_ViewImports.g.cshtml.cs
@@ -54,3 +51,4 @@
 /home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/Razor/Areas/Admin/Views/Products/Edit.g.cshtml.cs
 /home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/Razor/Areas/Admin/Views/Products/Delete.g.cshtml.cs
 /home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/Razor/Areas/Admin/Views/Products/Details.g.cshtml.cs
+/home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/Razor/Areas/Customer/Views/Home/Details.g.cshtml.cs

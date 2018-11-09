@@ -50,7 +50,7 @@ namespace GraniteHouse.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreatePost()
         {
- 
+
             if (!ModelState.IsValid)
             {
                 return View(ProductsVM);
@@ -88,119 +88,122 @@ namespace GraniteHouse.Areas.Admin.Controllers
             await _db.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
 
 
         //GET Edit Action Method
+
+        //GET : Edit
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-
-            var product = await _db.Products.FindAsync(id);
-            if (product == null)
+            ProductsVM.Products = await _db.Products.Include(m => m.SpecialTags).Include(m => m.ProductTypes).SingleOrDefaultAsync(m => m.Id == id);
+            if (ProductsVM.Products == null)
             {
                 return NotFound();
             }
-
-            return View(product);
+            return View(ProductsVM);
         }
 
-        //POST Edit action Method
+        //Post : Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Products products)
+        public async Task<IActionResult> Edit(int id)
         {
-            if (id != products.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
-                _db.Update(products);
+                string webRootPath = _hostingEnv.WebRootPath;
+                var files = HttpContext.Request.Form.Files;
+                var productFromDb = _db.Products.Where(m => m.Id == ProductsVM.Products.Id).FirstOrDefault();
+                if (files.Count > 0 && files[0] != null)
+                {
+                    //if user uploads a new image
+                    var uploads = Path.Combine(webRootPath, SD.ImageFolder);
+                    var extension_new = Path.GetExtension(files[0].FileName);
+                    var extension_old = Path.GetExtension(productFromDb.Image);
+                    if (System.IO.File.Exists(Path.Combine(uploads, ProductsVM.Products.Id + extension_old)))
+                    {
+                        System.IO.File.Delete(Path.Combine(uploads, ProductsVM.Products.Id + extension_old));
+                    }
+                    using (var filestream = new FileStream(Path.Combine(uploads, ProductsVM.Products.Id + extension_new), FileMode.Create))
+                    {
+                        files[0].CopyTo(filestream);
+                    }
+                    ProductsVM.Products.Image = @"/" + SD.ImageFolder + @"/" + ProductsVM.Products.Id + extension_new;
+                }
+                if (ProductsVM.Products.Image != null)
+                {
+                    productFromDb.Image = ProductsVM.Products.Image;
+                }
+                productFromDb.Name = ProductsVM.Products.Name;
+                productFromDb.Price = ProductsVM.Products.Price;
+                productFromDb.Available = ProductsVM.Products.Available;
+                productFromDb.ProductTypeId = ProductsVM.Products.ProductTypeId;
+                productFromDb.SpecialTagsID = ProductsVM.Products.SpecialTagsID;
+                productFromDb.ShadeColor = ProductsVM.Products.ShadeColor;
                 await _db.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(products);
+            return View(ProductsVM);
         }
 
         //GET Details Action Method
+        //GET : Details
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-
-            var product = await _db.Products.FindAsync(id);
-            if (product == null)
+            ProductsVM.Products = await _db.Products.Include(m => m.SpecialTags).Include(m => m.ProductTypes).SingleOrDefaultAsync(m => m.Id == id);
+            if (ProductsVM.Products == null)
             {
                 return NotFound();
             }
-
-            return View(product);
+            return View(ProductsVM);
         }
         //GET Delete Action Method
+        //GET : Delete
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var product = await _db.Products.FindAsync(id);
-            if (product == null)
+            ProductsVM.Products = await _db.Products.Include(m => m.SpecialTags).Include(m => m.ProductTypes).SingleOrDefaultAsync(m => m.Id == id);
+            if (ProductsVM.Products == null)
             {
                 return NotFound();
             }
-            return View(product);
+            return View(ProductsVM);
         }
+        
         //POST Delete action Method
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var products = await _db.Products.FindAsync(id);
-            _db.Products.Remove(products);
-            await _db.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            string webRootPath = _hostingEnv.WebRootPath;
+            Products products = await _db.Products.FindAsync(id);
+            if (products == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                var uploads = Path.Combine(webRootPath, SD.ImageFolder);
+                var extension = Path.GetExtension(products.Image);
+                if (System.IO.File.Exists(Path.Combine(uploads, products.Id + extension)))
+                {
+                    System.IO.File.Delete(Path.Combine(uploads, products.Id + extension));
+                }
+                _db.Products.Remove(products);
+                await _db.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
         }
-
     }
 }

@@ -53,3 +53,6 @@
 /home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/Razor/Areas/Admin/Views/Products/Details.g.cshtml.cs
 /home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/Razor/Areas/Customer/Views/Home/Details.g.cshtml.cs
 /home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/Razor/Areas/Customer/Views/ShoppingCart/Index.g.cshtml.cs
+/home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/Razor/Areas/Customer/Views/ShoppingCart/AppointmentConfirmation.g.cshtml.cs
+/home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_AppointmentCustomerDetails.g.cshtml.cs
+/home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_AppointmentProductDetails.g.cshtml.cs

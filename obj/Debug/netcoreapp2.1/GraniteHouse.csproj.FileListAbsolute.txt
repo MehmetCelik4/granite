@@ -89,3 +89,5 @@
 /home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/Razor/Areas/Identity/Pages/_ValidationScriptsPartial.g.cshtml.cs
 /home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/Razor/Areas/Identity/Pages/_ViewImports.g.cshtml.cs
 /home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/Razor/Areas/Admin/Views/AdminUsers/Index.g.cshtml.cs
+/home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/Razor/Areas/Admin/Views/AdminUsers/Delete.g.cshtml.cs
+/home/mehmet/project/dotnet/GraniteHouse/obj/Debug/netcoreapp2.1/Razor/Areas/Admin/Views/AdminUsers/Edit.g.cshtml.cs

@@ -21,6 +21,8 @@ namespace GraniteHouse.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("ApplicationUserId");
+
                     b.Property<DateTime>("AppointmentDate");
 
                     b.Property<string>("CustomerEmail");
@@ -32,6 +34,8 @@ namespace GraniteHouse.Migrations
                     b.Property<bool>("isConfirmed");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.ToTable("Appointments");
                 });
@@ -226,11 +230,9 @@ namespace GraniteHouse.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.Property<string>("LoginProvider")
-                        .HasMaxLength(128);
+                    b.Property<string>("LoginProvider");
 
-                    b.Property<string>("ProviderKey")
-                        .HasMaxLength(128);
+                    b.Property<string>("ProviderKey");
 
                     b.Property<string>("ProviderDisplayName");
 
@@ -261,11 +263,9 @@ namespace GraniteHouse.Migrations
                 {
                     b.Property<string>("UserId");
 
-                    b.Property<string>("LoginProvider")
-                        .HasMaxLength(128);
+                    b.Property<string>("LoginProvider");
 
-                    b.Property<string>("Name")
-                        .HasMaxLength(128);
+                    b.Property<string>("Name");
 
                     b.Property<string>("Value");
 
@@ -283,6 +283,13 @@ namespace GraniteHouse.Migrations
                     b.ToTable("ApplicationUser");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
+                });
+
+            modelBuilder.Entity("GraniteHouse.Models.Appointments", b =>
+                {
+                    b.HasOne("GraniteHouse.Models.ApplicationUser", "SalesPerson")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
                 });
 
             modelBuilder.Entity("GraniteHouse.Models.Products", b =>

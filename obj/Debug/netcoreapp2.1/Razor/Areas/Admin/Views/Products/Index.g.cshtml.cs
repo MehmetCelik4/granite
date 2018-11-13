@@ -63,7 +63,7 @@ using GraniteHouse.Models;
             WriteLiteral("\n<br /><br />\n\n<div class=\"row\">\n    <div class=\"col-6\">\n        <h2 class=\"text-info\"> Product List</h2>\n    </div>\n    <div class=\"col-6 text-right\">\n        ");
             EndContext();
             BeginContext(247, 94, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e06355b711fc49598c7d7ba37f0f1cf5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b2eb4c629f5a4f8b8ac44151ba53defa", async() => {
                 BeginContext(291, 46, true);
                 WriteLiteral("<i class=\"fas fa-plus\"></i>&nbsp; New Product ");
                 EndContext();
@@ -208,7 +208,7 @@ using GraniteHouse.Models;
             WriteLiteral("            </td>\n            <td>\n                ");
             EndContext();
             BeginContext(1603, 54, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "a643d330c1904684987f1d6b794b08ea", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "ccc9177d94f04c3883f0e281c11934ca", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();

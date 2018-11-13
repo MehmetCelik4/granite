@@ -62,7 +62,7 @@ using GraniteHouse.Models;
             WriteLiteral("\n<br /><br />\n\n<div class=\"row\">\n    <div class=\"col-6\">\n        <h2 class=\"text-info\"> Admin Users List</h2>\n    </div>\n    <div class=\"col-6 text-right\">\n        ");
             EndContext();
             BeginContext(258, 125, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "29c08a199d9f450d80680d7867cf42f8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c2cf7e17125e4b83bfaf1c2c97514eeb", async() => {
                 BeginContext(331, 48, true);
                 WriteLiteral("<i class=\"fas fa-plus\"></i>&nbsp; New Admin User");
                 EndContext();

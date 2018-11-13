@@ -12368,11 +12368,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/mehmet/project/dotnet/GraniteHouse/GraniteHouse.csproj",
+      "projectUniqueName": "/home/mehmet/project/dotnet/granite/GraniteHouse.csproj",
       "projectName": "GraniteHouse",
-      "projectPath": "/home/mehmet/project/dotnet/GraniteHouse/GraniteHouse.csproj",
+      "projectPath": "/home/mehmet/project/dotnet/granite/GraniteHouse.csproj",
       "packagesPath": "/home/mehmet/.nuget/packages/",
-      "outputPath": "/home/mehmet/project/dotnet/GraniteHouse/obj/",
+      "outputPath": "/home/mehmet/project/dotnet/granite/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"

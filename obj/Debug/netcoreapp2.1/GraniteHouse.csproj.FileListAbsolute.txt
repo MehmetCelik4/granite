@@ -188,4 +188,4 @@
 /home/mehmet/project/dotnet/granite/obj/Debug/netcoreapp2.1/Razor/Areas/Admin/Views/Appointments/Edit.g.cshtml.cs
 /home/mehmet/project/dotnet/granite/obj/Debug/netcoreapp2.1/Razor/Areas/Admin/Views/Appointments/Details.g.cshtml.cs
 /home/mehmet/project/dotnet/granite/obj/Debug/netcoreapp2.1/Razor/Areas/Admin/Views/Appointments/Delete.g.cshtml.cs
-/home/mehmet/project/dotnet/granite/obj/Debug/netcoreapp2.1/Razor/Views/Components/UserName/Default.g.cshtml.cs
+/home/mehmet/project/dotnet/granite/obj/Debug/netcoreapp2.1/Razor/Views/Shared/Components/UserName/Default.g.cshtml.cs

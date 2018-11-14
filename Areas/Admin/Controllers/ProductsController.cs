@@ -10,7 +10,6 @@ using GraniteHouse.Utility;
 using Microsoft.AspNetCore.Hosting.Internal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using GraniteHouse.Utility;
 using Microsoft.AspNetCore.Authorization;
 
 namespace GraniteHouse.Areas.Admin.Controllers

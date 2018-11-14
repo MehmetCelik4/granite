@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using GraniteHouse.Data;
-using GraniteHouse.Models.ViewModel;
 using GraniteHouse.Models;
+using GraniteHouse.Models.ViewModel;
 using GraniteHouse.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -19,6 +20,7 @@ namespace GraniteHouse.Areas.Admin.Controllers
     {
 
         private readonly ApplicationDbContext _db;
+        private int PageSize = 3;
 
         public AppointmentsController(ApplicationDbContext db)
         {
@@ -26,7 +28,7 @@ namespace GraniteHouse.Areas.Admin.Controllers
         }
 
 
-        public async Task<IActionResult> Index(string searchName = null, string searchEmail = null, string searchPhone = null, string searchDate = null)
+        public async Task<IActionResult> Index(int productPage = 1, string searchName = null, string searchEmail = null, string searchPhone = null, string searchDate = null)
         {
             System.Security.Claims.ClaimsPrincipal currentUser = this.User;
             var claimsIdentity = (ClaimsIdentity)this.User.Identity;
@@ -36,6 +38,31 @@ namespace GraniteHouse.Areas.Admin.Controllers
             {
                 Appointments = new List<Models.Appointments>()
             };
+
+            StringBuilder param = new StringBuilder();
+
+            param.Append("/Admin/Appointments?productPage=:");
+            param.Append("&searchName=");
+            if (searchName != null)
+            {
+                param.Append(searchName);
+            }
+            param.Append("&searchEmail=");
+            if (searchEmail != null)
+            {
+                param.Append(searchEmail);
+            }
+            param.Append("&searchPhone=");
+            if (searchPhone != null)
+            {
+                param.Append(searchPhone);
+            }
+            param.Append("&searchDate=");
+            if (searchDate != null)
+            {
+                param.Append(searchDate);
+            }
+
 
 
 
@@ -72,10 +99,24 @@ namespace GraniteHouse.Areas.Admin.Controllers
 
             }
 
+            var count = appointmentVM.Appointments.Count;
+
+            appointmentVM.Appointments = appointmentVM.Appointments.OrderBy(p => p.AppointmentDate)
+                .Skip((productPage - 1) * PageSize)
+                .Take(PageSize).ToList();
+
+
+            appointmentVM.PagingInfo = new PagingInfo
+            {
+                CurrentPage = productPage,
+                ItemsPerPage = PageSize,
+                TotalItems = count,
+                urlParam = param.ToString()
+            };
+
 
             return View(appointmentVM);
         }
-
 
         //GET Edit
         public async Task<IActionResult> Edit(int? id)
@@ -84,18 +125,22 @@ namespace GraniteHouse.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+
             var productList = (IEnumerable<Products>)(from p in _db.Products
                                                       join a in _db.ProductsSelectedForAppointment
                                                       on p.Id equals a.ProductId
                                                       where a.AppointmentId == id
                                                       select p).Include("ProductTypes");
+
             AppointmentDetailsViewModel objAppointmentVM = new AppointmentDetailsViewModel()
             {
                 Appointment = _db.Appointments.Include(a => a.SalesPerson).Where(a => a.Id == id).FirstOrDefault(),
                 SalesPerson = _db.ApplicationUser.ToList(),
                 Products = productList.ToList()
             };
+
             return View(objAppointmentVM);
+
         }
 
 
@@ -108,7 +153,9 @@ namespace GraniteHouse.Areas.Admin.Controllers
                 objAppointmentVM.Appointment.AppointmentDate = objAppointmentVM.Appointment.AppointmentDate
                                     .AddHours(objAppointmentVM.Appointment.AppointmentTime.Hour)
                                     .AddMinutes(objAppointmentVM.Appointment.AppointmentTime.Minute);
+
                 var appointmentFromDb = _db.Appointments.Where(a => a.Id == objAppointmentVM.Appointment.Id).FirstOrDefault();
+
                 appointmentFromDb.CustomerName = objAppointmentVM.Appointment.CustomerName;
                 appointmentFromDb.CustomerEmail = objAppointmentVM.Appointment.CustomerEmail;
                 appointmentFromDb.CustomerPhoneNumber = objAppointmentVM.Appointment.CustomerPhoneNumber;
@@ -119,10 +166,15 @@ namespace GraniteHouse.Areas.Admin.Controllers
                     appointmentFromDb.ApplicationUserId = objAppointmentVM.Appointment.ApplicationUserId;
                 }
                 _db.SaveChanges();
+
                 return RedirectToAction(nameof(Index));
+
+
             }
+
             return View(objAppointmentVM);
         }
+
 
         //GET Detials
         public async Task<IActionResult> Details(int? id)
@@ -131,19 +183,24 @@ namespace GraniteHouse.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+
             var productList = (IEnumerable<Products>)(from p in _db.Products
                                                       join a in _db.ProductsSelectedForAppointment
                                                       on p.Id equals a.ProductId
                                                       where a.AppointmentId == id
                                                       select p).Include("ProductTypes");
+
             AppointmentDetailsViewModel objAppointmentVM = new AppointmentDetailsViewModel()
             {
                 Appointment = _db.Appointments.Include(a => a.SalesPerson).Where(a => a.Id == id).FirstOrDefault(),
                 SalesPerson = _db.ApplicationUser.ToList(),
                 Products = productList.ToList()
             };
+
             return View(objAppointmentVM);
+
         }
+
 
         //GET Delete
         public async Task<IActionResult> Delete(int? id)
@@ -152,19 +209,25 @@ namespace GraniteHouse.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+
             var productList = (IEnumerable<Products>)(from p in _db.Products
                                                       join a in _db.ProductsSelectedForAppointment
                                                       on p.Id equals a.ProductId
                                                       where a.AppointmentId == id
                                                       select p).Include("ProductTypes");
+
             AppointmentDetailsViewModel objAppointmentVM = new AppointmentDetailsViewModel()
             {
                 Appointment = _db.Appointments.Include(a => a.SalesPerson).Where(a => a.Id == id).FirstOrDefault(),
                 SalesPerson = _db.ApplicationUser.ToList(),
                 Products = productList.ToList()
             };
+
             return View(objAppointmentVM);
+
         }
+
+
         //POST Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
